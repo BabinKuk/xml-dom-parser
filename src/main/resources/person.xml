@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persons>
+	<person>
+	    <name>Baeldung</name>
+	    <address>
+	        <zip>00001</zip>
+	        <city>New York</city>
+	    </address>
+	</person>
+	<person>
+	    <name>Gina</name>
+	    <address>
+	        <zip>52100</zip>
+	        <city>Pula</city>
+	    </address>
+	</person>
+</persons>

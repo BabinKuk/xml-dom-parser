@@ -294,6 +294,4 @@ public class PersonXmlHandlerTest {
 		
 		assertEquals("name", element.getNodeName());
 	}
-
-
 }

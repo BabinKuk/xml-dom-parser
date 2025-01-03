@@ -34,6 +34,10 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
+/**
+ * Implementation for validating, parsing and writing XML document using DOM
+ * 
+ */
 public class PersonXmlHandler {
 	
 	private final Logger log = LogManager.getLogger(getClass());
@@ -124,13 +128,13 @@ public class PersonXmlHandler {
 			
 			if (personInput.getPersonList() != null) {
 				personInput.getPersonList().forEach(
-					individual -> {
-						log.info(individual);
-						Element elementIndividual = createElement(document, personDocument, PERSON);
-						Element elementName = createElementWithText(document, elementIndividual, NAME, individual.getName());
-						Element elementAddress = createElement(document, elementIndividual, ADDRESS);
-						Element elementZip = createElementWithText(document, elementAddress, ZIP, individual.getAddress().getZip());
-						Element elementCity = createElementWithText(document, elementAddress, CITY, individual.getAddress().getCity());
+					person -> {
+						//log.info(person);
+						Element elementPerson = createElement(document, personDocument, PERSON);
+						Element elementName = createElementWithText(document, elementPerson, NAME, person.getName());
+						Element elementAddress = createElement(document, elementPerson, ADDRESS);
+						Element elementZip = createElementWithText(document, elementAddress, ZIP, person.getAddress().getZip());
+						Element elementCity = createElementWithText(document, elementAddress, CITY, person.getAddress().getCity());
 					}
 				);
 			}
@@ -174,12 +178,12 @@ public class PersonXmlHandler {
 		return persons;
 	}
 	
-	public Person getPerson(Element personDocument) {
+	public Person getPerson(Element element) {
 		Person person = new Person();
 		
-		person.setName(getElementText(NAME, personDocument));
+		person.setName(getElementText(NAME, element));
 		
-		Element addressElement = getChildElement(ADDRESS, personDocument);
+		Element addressElement = getChildElement(ADDRESS, element);
 		if (addressElement != null) {
 			Address address = new Address();
 			
@@ -288,7 +292,7 @@ public class PersonXmlHandler {
 				for (int i=0; i<n; i++) {
 					Node current = nodeList.item(i);
 					if (current.getNodeType() == Node.ELEMENT_NODE) {
-						log.info(current.getNodeName() + " : " + current.getTextContent());
+						//log.info(current.getNodeName() + " : " + current.getTextContent());
 						if (current.getNodeName().equals(tag)) {
 							//log.info("NASAO: " + current.getNodeName() + " : " + current.getTextContent());
 							result = (Element) current;

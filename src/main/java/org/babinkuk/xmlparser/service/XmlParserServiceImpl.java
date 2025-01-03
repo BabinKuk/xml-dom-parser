@@ -53,7 +53,6 @@ public class XmlParserServiceImpl implements XmlParserService {
 		
 		Persons persons = handler.parseXml();
 		
-		//log.info("person {}", person);
 		response.setPersons(persons);
 		
         return response;
@@ -70,7 +69,6 @@ public class XmlParserServiceImpl implements XmlParserService {
 		
 		String xmlResult = handler.writeXml(person);
 				
-		//log.info(result);
 		response.setXmlResult(xmlResult);
 		
 		return response;
